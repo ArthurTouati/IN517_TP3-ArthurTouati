@@ -95,7 +95,7 @@ TP3/
 
 ## 👨‍🎓 Auteur
 
-Projet réalisé dans le cadre du cours IN517 - IPSA 2025
+Projet réalisé dans le cadre du cours IN517 - IPSA 2025 par Arthur Touati
 
 ## 📜 Licence
 

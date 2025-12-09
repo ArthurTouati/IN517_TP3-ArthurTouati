@@ -7,6 +7,7 @@ import cesar_cypher
 import substitution_cypher
 import cryptage_xor
 import feistel_block_cypher_cryptage
+import RSA
 
 # Pour AES-GCM (nécessite la bibliothèque cryptography)
 try:
@@ -31,6 +32,7 @@ def afficher_menu():
         print("  5. Chiffrement AES-GCM")
     else:
         print("  5. Chiffrement AES-GCM (non disponible - installer cryptography)")
+    print("  6. Chiffrement RSA")
     print("  0. Quitter")
     print("-"*50)
 
@@ -145,6 +147,37 @@ def chiffrement_aes_gcm():
     print(f"Vérification (déchiffré): {dechiffre.decode('utf-8')}")
 
 
+def chiffrement_rsa():
+    """Interface pour le chiffrement RSA."""
+    print("\n--- Chiffrement RSA ---")
+    print("(Génération des clés en cours, veuillez patienter...)")
+    
+    # Générer les clés RSA (512 bits pour la démonstration rapide)
+    public_key, private_key = RSA.rsa_keygen(512)
+    n, e = public_key
+    _, d = private_key
+    
+    print("\n[PUBLIC KEY] Cle publique generee:")
+    print(f"   n = {str(n)[:50]}..." if len(str(n)) > 50 else f"   n = {n}")
+    print(f"   e = {e}")
+    
+    print("\n[PRIVATE KEY] Cle privee generee:")
+    print(f"   d = {str(d)[:50]}..." if len(str(d)) > 50 else f"   d = {d}")
+    
+    texte = input("\nEntrez le texte à chiffrer: ")
+    
+    try:
+        # Chiffrement
+        chiffre = RSA.rsa_encrypt_text(texte, public_key)
+        print(f"\nTexte chiffré: {str(chiffre)[:80]}..." if len(str(chiffre)) > 80 else f"\nTexte chiffré: {chiffre}")
+        
+        # Déchiffrement
+        dechiffre = RSA.rsa_decrypt_text(chiffre, private_key)
+        print(f"Vérification (déchiffré): {dechiffre}")
+    except ValueError as e:
+        print(f"\nErreur: {e}")
+
+
 def main():
     """Fonction principale du programme."""
     print("\nBienvenue dans l'outil de chiffrement TP3!")
@@ -163,6 +196,8 @@ def main():
             chiffrement_feistel()
         elif choix == "5":
             chiffrement_aes_gcm()
+        elif choix == "6":
+            chiffrement_rsa()
         elif choix == "0":
             print("\nAu revoir!")
             break
@@ -174,3 +209,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

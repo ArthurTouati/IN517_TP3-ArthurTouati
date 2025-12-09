@@ -5,7 +5,7 @@
 
 ## 📋 Description
 
-Ce projet implémente différents algorithmes de chiffrement classiques et modernes en Python. Il permet de comprendre les principes fondamentaux de la cryptographie symétrique à travers des exemples pratiques.
+Ce projet implémente différents algorithmes de chiffrement classiques et modernes en Python. Il permet de comprendre les principes fondamentaux de la cryptographie symétrique et asymétrique à travers des exemples pratiques.
 
 ## 🚀 Algorithmes Implémentés
 
@@ -16,6 +16,7 @@ Ce projet implémente différents algorithmes de chiffrement classiques et moder
 | XOR | `cryptage_xor.py` | Chiffrement par flux |
 | Feistel | `feistel_block_cypher_cryptage.py` | Chiffrement par bloc |
 | AES-GCM | `aes_gcm.py` | Chiffrement authentifié |
+| RSA | `RSA.py` | Chiffrement asymétrique |
 
 ## 📦 Installation
 
@@ -51,6 +52,7 @@ python substitution_cypher.py
 python cryptage_xor.py
 python feistel_block_cypher_cryptage.py
 python aes_gcm.py
+python RSA.py
 ```
 
 ## 📖 Détail des Algorithmes
@@ -80,6 +82,18 @@ Chiffrement authentifié standard moderne.
 - **Clé** : 128, 192 ou 256 bits
 - **Authentification** : Garantit l'intégrité des données
 
+### 6. RSA
+Chiffrement asymétrique basé sur la factorisation de grands nombres premiers.
+- **Clé publique** : (n, e) - utilisée pour chiffrer
+- **Clé privée** : (n, d) - utilisée pour déchiffrer
+- **Sécurité** : Basée sur la difficulté de factoriser n = p × q
+- **Fonctions** :
+  - `rsa_keygen(keysize)` : Génère une paire de clés
+  - `rsa_encrypt(m, public_key)` : Chiffre un message (entier)
+  - `rsa_decrypt(c, private_key)` : Déchiffre un message
+  - `rsa_encrypt_text(text, public_key)` : Chiffre du texte
+  - `rsa_decrypt_text(c, private_key)` : Déchiffre en texte
+
 ## 📁 Structure du Projet
 
 ```
@@ -90,13 +104,15 @@ TP3/
 ├── cryptage_xor.py                 # Chiffrement XOR
 ├── feistel_block_cypher_cryptage.py # Chiffrement Feistel
 ├── aes_gcm.py                      # Chiffrement AES-GCM
+├── RSA.py                          # Chiffrement RSA (asymétrique)
 └── README.md                       # Ce fichier
 ```
 
 ## 👨‍🎓 Auteur
 
-Projet réalisé dans le cadre du cours IN517 - IPSA 2025
+Projet réalisé dans le cadre du cours IN517 - IPSA 2025 par Arthur Touati
 
 ## 📜 Licence
 
 Ce projet est destiné à des fins éducatives.
+
